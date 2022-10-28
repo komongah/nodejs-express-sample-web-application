@@ -1,0 +1,7 @@
+{
+    "recursive": true,
+    "check-leaks": true,
+    "extension": ["js"],
+    "spec": "test/**/*Test.js",
+    "require": "test/babel-register.js"
+}
