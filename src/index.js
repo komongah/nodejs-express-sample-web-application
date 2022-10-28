@@ -1,9 +1,6 @@
 // EcmaScript-6 Support
-require('@babel/register')
-(
-    {
-        extensions: ['.js']
-    }
-);
+require('@babel/register')({
+    extensions: ['.js']
+});
 
 module.exports = require('./server.js');

@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "off",
+    "prettier/prettier": "error",
+    "semi": "off",
+    "no-return-await": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  }
+}
