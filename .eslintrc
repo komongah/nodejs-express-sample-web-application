@@ -1,0 +1,19 @@
+{
+  "root": true,
+  "plugins": [
+    "prettier"
+  ],
+  "extends": [
+    "prettier"
+  ],
+  "rules": {
+    "no-console": "off",
+    "semi": "off",
+    "no-return-await": "off",
+    "comma-dangle": "off"
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  }
+}

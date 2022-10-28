@@ -1,0 +1,39 @@
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "Sample Web Application",
+        "version": "1.0.0",
+        "description": "Sample Web Application API Documentation",
+        "contact": { "name": "Komongah", "email": "komongah@gmail.com" },
+        "x-displayName": "Sample Web Application API"
+    },
+    "basePath": "/",
+    "paths": {
+        "/health-check": {
+            "get": {
+                "tags": ["System"],
+                "summary": "Check System Health",
+                "operationId": "Check System Health",
+                "description": "Check System Health",
+                "responses": {
+                    "200": {
+                        "description": "Health Check Response",
+                        "content": {
+                            "application/json": { "schema": { "$ref": "#/components/schemas/Health Check Response" } }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Health Check Response": {
+                "type": "object",
+                "required": ["status"],
+                "properties": { "status": { "type": "string" } }
+            }
+        }
+    },
+    "tags": []
+}

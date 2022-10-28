@@ -1,8 +1,5 @@
 node_modules
 .idea
-dist
 package-lock.json
 yarn-error.log
-
-# Logs
-logs
+.husky
