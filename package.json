@@ -10,6 +10,8 @@
         "server:start": "yarn install && yarn run:server",
         "server:start:pm2": "yarn install && pm2-runtime ecosystem.config.js --only sample-web-application",
         "server:clear": "pm2 kill",
+        "docs:swagger:json": "node ./src/docs/swagger/index.js",
+        "docs:redoc": "npx rimraf ./docs && npx mkdirp ./docs && yarn docs:swagger:json && redoc-cli bundle ./docs/swagger.json --output ./docs/sample-web-application-api-docs.html",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write",
         "lint": "eslint .",
         "lint:fix": "eslint --fix ."
@@ -27,6 +29,7 @@
         "body-parser": "^1.20.1",
         "cors": "^2.8.5",
         "express": "^4.18.2",
+        "redoc-cli": "^0.13.20",
         "swagger-jsdoc": "^6.2.5",
         "swagger-ui-express": "^4.5.0",
         "winston": "^3.8.2",

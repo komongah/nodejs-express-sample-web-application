@@ -23,11 +23,11 @@ app.use(
 );
 
 const { swaggerOptions = {} } = config.app;
-const swaggerSpec = swaggerJsDoc(swaggerOptions);
+const swaggerJsonDoc = swaggerJsDoc(swaggerOptions);
 
 // Routes
 app.use(constants.ROUTE.HEALTH_CHECK, healthCheckRouter);
-app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, (req, res) => res.send(swaggerSpec));
-app.use(constants.ROUTE.API_DOCS, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, (req, res) => res.send(swaggerJsonDoc));
+app.use(constants.ROUTE.API_DOCS, swaggerUi.serve, swaggerUi.setup(swaggerJsonDoc));
 
 export default app;

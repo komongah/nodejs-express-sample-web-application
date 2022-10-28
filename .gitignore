@@ -6,3 +6,6 @@ yarn-error.log
 
 # Logs
 logs
+
+# Docs
+./docs
