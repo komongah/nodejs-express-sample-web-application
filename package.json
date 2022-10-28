@@ -1,42 +1,45 @@
 {
-  "name": "sample-web-application",
-  "version": "1.0.0",
-  "author": "komongah@gmail.com",
-  "license": "MIT",
-  "description": "",
-  "scripts": {
-    "run:server": "node src/index.js",
-    "server:start": "yarn install && yarn run:server",
-    "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/komongah/nodejs-express-sample-web-application.git"
-  },
-  "bugs": {
-    "url": "https://github.com/komongah/nodejs-express-sample-web-application/issues"
-  },
-  "homepage": "https://github.com/komongah/nodejs-express-sample-web-application#readme",
-  "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "body-parser": "^1.20.1",
-    "cors": "^2.8.5",
-    "express": "^4.18.2"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.19.6",
-    "@babel/plugin-proposal-class-properties": "^7.18.6",
-    "@babel/plugin-proposal-decorators": "^7.20.0",
-    "@babel/preset-env": "^7.19.4",
-    "@babel/register": "^7.18.9",
-    "babel-plugin-module-resolver": "^4.1.0",
-    "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
-  }
+    "name": "sample-web-application",
+    "version": "1.0.0",
+    "author": "komongah@gmail.com",
+    "license": "MIT",
+    "description": "",
+    "scripts": {
+        "run:server": "node src/index.js",
+        "server:start": "yarn install && yarn run:server",
+        "server:start:pm2": "yarn install && pm2-runtime ecosystem.config.js --only sample-web-application",
+        "server:clear": "pm2 kill",
+        "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write",
+        "lint": "eslint .",
+        "lint:fix": "eslint --fix ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/komongah/nodejs-express-sample-web-application.git"
+    },
+    "bugs": {
+        "url": "https://github.com/komongah/nodejs-express-sample-web-application/issues"
+    },
+    "homepage": "https://github.com/komongah/nodejs-express-sample-web-application#readme",
+    "dependencies": {
+        "@babel/plugin-transform-runtime": "^7.19.6",
+        "body-parser": "^1.20.1",
+        "cors": "^2.8.5",
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.19.6",
+        "@babel/plugin-proposal-class-properties": "^7.18.6",
+        "@babel/plugin-proposal-decorators": "^7.20.0",
+        "@babel/preset-env": "^7.19.4",
+        "@babel/register": "^7.18.9",
+        "babel-plugin-module-resolver": "^4.1.0",
+        "eslint": "^8.26.0",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-plugin-prettier": "^4.2.1",
+        "husky": "^8.0.1",
+        "lint-staged": "^13.0.3",
+        "pm2": "^5.2.2",
+        "prettier": "^2.7.1"
+    }
 }
