@@ -12,7 +12,9 @@
         "server:clear": "pm2 kill",
         "docs:swagger:json": "node ./src/docs/swagger/index.js",
         "docs:redoc": "npx rimraf ./docs && npx mkdirp ./docs && yarn docs:swagger:json && redoc-cli bundle ./docs/swagger.json --output ./docs/sample-web-application-api-docs.html",
-        "prettier-format": "prettier --config .prettierrc 'src/**/*.js' --write",
+        "prettier-format": "prettier --config .prettierrc 'src/**/*.js' 'test/**/*.js' --write",
+        "test": "NODE_ENV=test mocha",
+        "test:coverage": "NODE_ENV=test nyc mocha",
         "lint": "eslint .",
         "lint:fix": "eslint --fix ."
     },
@@ -42,12 +44,17 @@
         "@babel/preset-env": "^7.19.4",
         "@babel/register": "^7.18.9",
         "babel-plugin-module-resolver": "^4.1.0",
+        "chai": "^4.3.6",
         "eslint": "^8.26.0",
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-prettier": "^4.2.1",
         "husky": "^8.0.1",
         "lint-staged": "^13.0.3",
+        "mocha": "^10.1.0",
+        "nyc": "^15.1.0",
         "pm2": "^5.2.2",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "sinon": "^14.0.1",
+        "supertest": "^6.3.1"
     }
 }

@@ -3,3 +3,5 @@ node_modules
 package-lock.json
 yarn-error.log
 .husky
+coverage
+.nyc_output

@@ -10,7 +10,7 @@ Sample Web Application API Project
 -   [Test](#test-anchor)
 -   [Security](#security-anchor)
 
-<a name="#prerequisites-anchor"></a>
+<a name="prerequisites-anchor"></a>
 
 ## Prerequisites
 
@@ -61,7 +61,13 @@ There are several ways to run the application
 
 ## Test
 
-TBD
+-   Run tests
+
+`yarn test`
+
+-   Run tests with coverage
+
+`yarn test:coverage`
 
 <a name="security-anchor"></a>
 

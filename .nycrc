@@ -1,0 +1,13 @@
+{
+  "include": [
+    "src"
+  ],
+  "reporter": [
+    "lcov",
+    "html"
+  ],
+  "require": [
+    "@babel/register"
+  ],
+  "cache": false
+}
