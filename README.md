@@ -10,7 +10,7 @@ Sample Web Application API Project
 -   [Test](#test-anchor)
 -   [Security](#security-anchor)
 
-<a name="#prerequisites-anchor"></a>
+<a name="prerequisites-anchor"></a>
 
 ## Prerequisites
 
