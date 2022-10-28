@@ -14,6 +14,7 @@
         "docs:redoc": "npx rimraf ./docs && npx mkdirp ./docs && yarn docs:swagger:json && redoc-cli bundle ./docs/swagger.json --output ./docs/sample-web-application-api-docs.html",
         "prettier-format": "prettier --config .prettierrc 'src/**/*.js' 'test/**/*.js' --write",
         "test": "NODE_ENV=test mocha",
+        "test:coverage": "NODE_ENV=test nyc mocha",
         "lint": "eslint .",
         "lint:fix": "eslint --fix ."
     },
@@ -50,6 +51,7 @@
         "husky": "^8.0.1",
         "lint-staged": "^13.0.3",
         "mocha": "^10.1.0",
+        "nyc": "^15.1.0",
         "pm2": "^5.2.2",
         "prettier": "^2.7.1",
         "sinon": "^14.0.1",

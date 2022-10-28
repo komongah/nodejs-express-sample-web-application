@@ -6,3 +6,7 @@ yarn-error.log
 
 # Logs
 logs
+
+# Test output folders
+coverage
+.nyc_output
