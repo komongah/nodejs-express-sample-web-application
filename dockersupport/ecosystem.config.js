@@ -3,10 +3,11 @@ module.exports = {
         {
             name: 'sample-web-application',
             script: 'yarn run:server',
-            watch: true,
+            cwd: '/app',
+            watch: false,
             ignore_watch: ['node_modules', '.idea', 'dockersupport'],
             env: {
-                NODE_ENV: 'development',
+                NODE_ENV: 'production',
                 PORT: 8080
             }
         }
