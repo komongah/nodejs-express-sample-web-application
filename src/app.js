@@ -35,4 +35,24 @@ app.use(constants.ROUTE.API_DOCS, (req, res) =>
     res.sendFile(path.join(__dirname, '../docs/sample-web-application-api-docs.html'))
 );
 
+// Exception Handlers
+app.use((req, res) => {
+    const status = 404;
+    const message = 'Not found!';
+
+    return res.status(status).json({
+        status,
+        message
+    });
+});
+app.use((req, res) => {
+    const status = 500;
+    const message = 'Internal Server Error!';
+
+    return res.status(status).json({
+        status,
+        message
+    });
+});
+
 export default app;
