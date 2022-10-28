@@ -1,0 +1,18 @@
+{
+  "name": "sample-web-application",
+  "version": "1.0.0",
+  "author": "komongah@gmail.com",
+  "license": "MIT",
+  "description": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komongah/nodejs-express-sample-web-application.git"
+  },
+  "bugs": {
+    "url": "https://github.com/komongah/nodejs-express-sample-web-application/issues"
+  },
+  "homepage": "https://github.com/komongah/nodejs-express-sample-web-application#readme"
+}
