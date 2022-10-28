@@ -1,6 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import path from 'path';
 import swaggerUi from 'swagger-ui-express';
 import swaggerJsDoc from 'swagger-jsdoc';
 
@@ -28,6 +29,10 @@ const swaggerJsonDoc = swaggerJsDoc(swaggerOptions);
 // Routes
 app.use(constants.ROUTE.HEALTH_CHECK, healthCheckRouter);
 app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, (req, res) => res.send(swaggerJsonDoc));
-app.use(constants.ROUTE.API_DOCS, swaggerUi.serve, swaggerUi.setup(swaggerJsonDoc));
+app.use(constants.ROUTE.API_DOCS_SWAGGER, swaggerUi.serve, swaggerUi.setup(swaggerJsonDoc));
+
+app.use(constants.ROUTE.API_DOCS, (req, res) =>
+    res.sendFile(path.join(__dirname, '../docs/sample-web-application-api-docs.html'))
+);
 
 export default app;

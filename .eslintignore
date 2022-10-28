@@ -3,3 +3,4 @@ dist
 src/index.js
 ecosystem.config.js
 dockersupport
+docs
