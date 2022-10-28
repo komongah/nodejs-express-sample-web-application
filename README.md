@@ -61,7 +61,7 @@ There are several ways to run the application
 
 ## Test
 
-TBD
+`yarn test`
 
 <a name="security-anchor"></a>
 
