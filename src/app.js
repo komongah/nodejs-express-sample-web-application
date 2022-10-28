@@ -1,7 +1,11 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import swaggerUi from 'swagger-ui-express';
+import swaggerJsDoc from 'swagger-jsdoc';
+
 import constants from './utils/constants';
+import config from './app.config';
 
 import { healthCheckRouter } from './routers';
 
@@ -18,7 +22,12 @@ app.use(
     })
 );
 
+const { swaggerOptions = {} } = config.app;
+const swaggerSpec = swaggerJsDoc(swaggerOptions);
+
 // Routes
 app.use(constants.ROUTE.HEALTH_CHECK, healthCheckRouter);
+app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, (req, res) => res.send(swaggerSpec));
+app.use(constants.ROUTE.API_DOCS, swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 export default app;
