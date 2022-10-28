@@ -1,6 +1,9 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import constants from './utils/constants';
+
+import { healthCheckRouter } from './routers';
 
 // Initialize application
 const app = express();
@@ -14,5 +17,8 @@ app.use(
         limit: '100mb'
     })
 );
+
+// Routes
+app.use(constants.ROUTE.HEALTH_CHECK, healthCheckRouter);
 
 export default app;

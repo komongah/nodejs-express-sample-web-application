@@ -8,12 +8,12 @@
   ],
   "rules": {
     "no-console": "off",
-    "prettier/prettier": "error",
     "semi": "off",
-    "no-return-await": "off"
+    "no-return-await": "off",
+    "comma-dangle": "off"
   },
   "parserOptions": {
-    "ecmaVersion": 6,
+    "ecmaVersion": 2018,
     "sourceType": "module"
   }
 }
