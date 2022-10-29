@@ -1,6 +1,14 @@
 import { title, version } from '../package';
 
 const config = {
+    auth: {
+        secret: process.env.AUTH_SECRET || 'sample_web_application_secret',
+        expirationTimeInMillis: process.env.AUTH_EXPIRATION_TIME_IN_MILLIS || 1800000, // Default 30 minutes
+        swaggerUiAuth: {
+            username: process.env.SWAGGER_UI_USERNAME || 'admin',
+            password: process.env.SWAGGER_UI_PASSWORD || 'password'
+        }
+    },
     app: {
         port: process.env.PORT || '8080',
         logLevel: process.env.LOG_LEVEL || 'info',

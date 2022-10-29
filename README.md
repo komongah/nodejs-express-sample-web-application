@@ -26,8 +26,8 @@ Sample Web Application API Project
 `yarn docs:redoc`
 
 -   Static HTML file of the application documentation can be found in `$PROJECT_ROOT/docs/sample-web-application-api-docs.html`
--   The REDOC documentation can be reached [here](http://localhost:8080/api-docs) once the application is up and running.
--   The SWAGGER documentation can be reached [here](http://localhost:8080/api-docs-swagger) once the application is up and running.
+-   The REDOC documentation can be reached [here](http://localhost:8080/api-docs) once the application is up and running with default credentials: Username `admin`, Password: `password`
+-   The SWAGGER documentation can be reached [here](http://localhost:8080/api-docs-swagger) once the application is up and running with default credentials: Username `admin`, Password: `password`
 
 <a name="run-application-anchor"></a>
 
@@ -73,4 +73,46 @@ There are several ways to run the application
 
 ## Security
 
-TBD
+A valid JWT token is required to call secured apis.
+
+### To get a sample JWT Bearer Token
+
+JWT Token can be generated [here](https://jwt.io/)
+
+-   HEADER:ALGORITHM & TOKEN TYPE
+
+    ```json
+    {
+        "alg": "HS256",
+        "typ": "JWT"
+    }
+    ```
+
+-   PAYLOAD:DATA
+
+    -   'expiration' value should be in seconds. [The current Unix epoch time](https://www.epochconverter.com/) value can be used.
+    -   Application extends the token expiration time by 30 minutes more than the set value by default for demonstration.
+
+    ```json
+    {
+        "origin": "sample_web_application",
+        "expiration": 1667001938
+    }
+    ```
+
+-   VERIFY SIGNATURE
+
+    -   Replace 'your-256-bit-secret' with 'sample_web_application_secret'
+    -   Uncheck 'secret' box
+
+    ```
+    HMACSHA256(
+        base64UrlEncode(header) + "." +
+        base64UrlEncode(payload),
+
+        sample_web_application_secret
+
+    ) [ ] secret base64 encoded
+    ```
+
+-   JWT Token is ready to use in the left box.

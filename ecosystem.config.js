@@ -8,7 +8,11 @@ module.exports = {
             env: {
                 NODE_ENV: 'development',
                 PORT: 8080,
-                LOG_LEVEL: 'debug'
+                LOG_LEVEL: 'debug',
+                AUTH_SECRET: 'sample_web_application_secret',
+                AUTH_EXPIRATION_TIME_IN_MILLIS: 1800000,
+                SWAGGER_UI_USERNAME: 'admin',
+                SWAGGER_UI_PASSWORD: 'password'
             }
         }
     ]
