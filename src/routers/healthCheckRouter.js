@@ -20,6 +20,14 @@ const router = Router({ mergeParams: true });
  *           application/json:
  *             schema:
  *               $ref: '#/components/schemas/Health Check Response'
+ *       401:
+ *         description: Unauthorized
+ *         content:
+ *           text/plain:
+ *             schema:
+ *               type: string
+ *     security:
+ *       - 'Bearer Auth': []
  */
 router.get('/', healthCheck);
 
