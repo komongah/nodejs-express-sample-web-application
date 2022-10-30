@@ -1,17 +1,12 @@
 import express from 'express';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import path from 'path';
 import passport from 'passport';
 import swaggerUi from 'swagger-ui-express';
-import swaggerJsDoc from 'swagger-jsdoc';
-
-import constants from './utils/constants';
-import config from './app.config';
 
 import './auth/passport.setup';
-
-import { healthCheckRouter } from './routers';
+import constants from './utils/constants';
+import { healthCheckRouter, redocRouter, swaggerRouter, swaggerJsonRouter } from './routers';
 
 // Initialize application
 const app = express();
@@ -26,22 +21,19 @@ app.use(
     })
 );
 
-const { swaggerOptions = {} } = config.app;
-const swaggerJsonDoc = swaggerJsDoc(swaggerOptions);
-
 // Security
 const swaggerUiHttpBasicAuth = passport.authenticate('swaggerUiHttpBasicAuth', { session: false });
 const oauth2TokenAuthenticate = passport.authenticate('oauth2BearerToken', { session: false });
 const authenticationStrategies = [oauth2TokenAuthenticate];
 
 // Routes
-app.use(constants.ROUTE.HEALTH_CHECK, authenticationStrategies, healthCheckRouter);
-app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, swaggerUiHttpBasicAuth, (req, res) => res.send(swaggerJsonDoc));
-app.use(constants.ROUTE.API_DOCS_SWAGGER, swaggerUiHttpBasicAuth, swaggerUi.serve, swaggerUi.setup(swaggerJsonDoc));
+// Docs
+app.use(constants.ROUTE.API_DOCS_SWAGGER_JSON, swaggerUiHttpBasicAuth, swaggerJsonRouter);
+app.use(constants.ROUTE.API_DOCS_SWAGGER, swaggerUiHttpBasicAuth, swaggerUi.serve, swaggerRouter);
+app.use(constants.ROUTE.API_DOCS, swaggerUiHttpBasicAuth, redocRouter);
 
-app.use(constants.ROUTE.API_DOCS, swaggerUiHttpBasicAuth, (req, res) =>
-    res.sendFile(path.join(__dirname, '../docs/sample-web-application-api-docs.html'))
-);
+// Endpoints
+app.use(constants.ROUTE.HEALTH_CHECK, authenticationStrategies, healthCheckRouter);
 
 // Exception Handlers
 app.use((req, res) => {
