@@ -10,14 +10,14 @@ describe('GET /health-check', () => {
         restore();
     });
 
-    it('should unauthorized without token', async () => {
+    it('should be unauthorized without token', async () => {
         const response = await request(app).get('/health-check');
 
         expect(response.status).eq(401);
         expect(response.body).to.eql({});
     });
 
-    it('should get with fake token', async (done) => {
+    it('should be retrieved with fake token', async (done) => {
         stub(passport, 'authenticate').returns(done(null, {}));
 
         const response = await request(app).get('/health-check');
