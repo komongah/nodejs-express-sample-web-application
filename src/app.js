@@ -7,6 +7,8 @@ import swaggerUi from 'swagger-ui-express';
 import './auth/passport.setup';
 import constants from './utils/constants';
 import { healthCheckRouter, redocRouter, swaggerRouter, swaggerJsonRouter } from './routers';
+import notFoundExceptionHandler from './exceptions/handlers/notFoundExceptionHandler';
+import exceptionHandler from './exceptions/handlers/exceptionHandler';
 
 // Initialize application
 const app = express();
@@ -36,23 +38,7 @@ app.use(constants.ROUTE.API_DOCS, swaggerUiHttpBasicAuth, redocRouter);
 app.use(constants.ROUTE.HEALTH_CHECK, authenticationStrategies, healthCheckRouter);
 
 // Exception Handlers
-app.use((req, res) => {
-    const status = 404;
-    const message = 'Not found!';
-
-    return res.status(status).json({
-        status,
-        message
-    });
-});
-app.use((req, res) => {
-    const status = 500;
-    const message = 'Internal Server Error!';
-
-    return res.status(status).json({
-        status,
-        message
-    });
-});
+app.use(notFoundExceptionHandler);
+app.use(exceptionHandler);
 
 export default app;
