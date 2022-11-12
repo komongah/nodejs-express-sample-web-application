@@ -1,9 +1,10 @@
 import request from 'supertest';
 import { expect } from 'chai';
 import { stub, restore } from 'sinon';
-import passport from 'passport';
+import { Strategy } from 'passport-http-bearer';
 
-import app from '@src/app';
+import { initialize } from '@src/app';
+import * as oauth2Strategy from '@src/auth/strategies/oauth2.strategy';
 
 describe('GET /health-check', () => {
     afterEach(() => {
@@ -11,24 +12,25 @@ describe('GET /health-check', () => {
     });
 
     it('should be unauthorized without token', async () => {
+        const app = initialize();
+
         const response = await request(app).get('/health-check');
 
         expect(response.status).eq(401);
         expect(response.body).to.eql({});
     });
 
-    it('should be retrieved with fake token', async (done) => {
-        stub(passport, 'authenticate').returns(done(null, {}));
-
-        const response = await request(app).get('/health-check');
-
-        expect(response.status).eq(200);
-        expect(response.headers['content-type']).to.eql('application/json; charset=utf-8');
-        expect(response.body).not.null;
-        expect(JSON.stringify(response.body)).to.eql(
-            JSON.stringify({
-                status: 'UP'
+    it('should be retrieved with fake token', async () => {
+        stub(oauth2Strategy, 'OAuth2Strategy').returns(
+            new Strategy((token, done) => {
+                return done(null, {});
             })
         );
+
+        const app = initialize();
+
+        const response = await request(app).get('/health-check').set('Authorization', 'Bearer fake-token');
+        expect(response.headers['content-type']).match(/json/);
+        expect(response.status).eq(200);
     });
 });

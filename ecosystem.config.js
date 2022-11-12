@@ -12,7 +12,8 @@ module.exports = {
                 AUTH_SECRET: 'sample_web_application_secret',
                 AUTH_EXPIRATION_TIME_IN_MILLIS: 1800000,
                 SWAGGER_UI_USERNAME: 'admin',
-                SWAGGER_UI_PASSWORD: 'password'
+                SWAGGER_UI_PASSWORD: 'password',
+                DB_CONNECTION_STRING: 'mongodb://localhost:27017/sample-web-application'
             }
         }
     ]
