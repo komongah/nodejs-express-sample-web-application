@@ -15,6 +15,7 @@ Sample Web Application API Project
 ## Prerequisites
 
 -   [Node 19+](https://nodejs.org/en/)
+-   [MongoDB 6.0+](https://www.mongodb.com/)
 -   [Docker](https://docs.docker.com/get-docker/)
 
 <a name="api-documentation-anchor"></a>
@@ -45,13 +46,21 @@ There are several ways to run the application
 
 3. docker
 
+-   Create a network
+
+`docker network create sample-web-application_network`
+
+-   Start a MongoDB server instance
+
+`docker run --network sample-web-application_network --name sample-web-application_db -p 27017:27017 -d --restart unless-stopped mongo:6.0`
+
 -   Create docker image
 
 `docker build --no-cache -t sample-web-application:latest .`
 
 -   Run application
 
-`docker run -p=8080:8080 sample-web-application:latest`
+`docker run --network sample-web-application_network -p=8080:8080 -d sample-web-application:latest`
 
 4. docker-compose
 

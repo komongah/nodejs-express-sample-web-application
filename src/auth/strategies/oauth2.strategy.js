@@ -4,7 +4,7 @@ import config from '../../app.config';
 import { AuthService } from '../../services/AuthService';
 import logger from '../../utils/logger';
 
-export default function OAuth2Strategy() {
+function OAuth2Strategy() {
     return new Strategy((token, done) => {
         AuthService.AccessToken = null;
 
@@ -46,3 +46,5 @@ export default function OAuth2Strategy() {
         return done(null, false, { message: 'Unauthorized!', scope: '' });
     });
 }
+
+export { OAuth2Strategy };

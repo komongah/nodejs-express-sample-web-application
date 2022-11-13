@@ -5,6 +5,17 @@ services:
     restart: unless-stopped
     image: sample-web-app:latest
     build: .
-    container_name: sample-web-app
+    container_name: sample-web-application
+    depends_on:
+      - sample-web-application_db
     ports:
       - 8080:8080
+
+  sample-web-application_db:
+    restart: unless-stopped
+    image: mongo:6.0
+    volumes:
+      - ./data:/data/db
+    container_name: sample-web-application_db
+    ports:
+      - 27017:27017

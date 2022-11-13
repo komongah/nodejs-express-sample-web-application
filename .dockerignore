@@ -5,3 +5,5 @@ yarn-error.log
 .husky
 coverage
 .nyc_output
+logs
+data/

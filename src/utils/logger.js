@@ -32,7 +32,7 @@ const logger = winston.createLogger({
 
 // If we're in development then log to the `console` with the format:
 // `${info.level}: ${info.message} JSON.stringify({ ...rest }) `
-if (process.env.NODE_ENV === 'development') {
+if (!process.env.NODE_ENV || process.env.NODE_ENV === 'development') {
     logger.add(
         new winston.transports.Console({
             format: winston.format.simple()

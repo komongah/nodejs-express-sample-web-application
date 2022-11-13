@@ -6,3 +6,5 @@ dockersupport
 docs
 coverage
 .nyc_output
+logs
+data/
